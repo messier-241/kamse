@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Slideshow</title>
+        <link rel="stylesheet" href="./style.css"/>
+    </head>
+    <body>
+        <a href="./index.html">Back to homepage</a>
+       <div class="slidecontainer">
+        <div class="slide"><img src="./images/pic1.jpg"></div>
+        <div class="slide"><img src="./images/pic2.jpg"></div>
+        <div class="slide"><img src="./images/pic3.jpg"></div>
+        <div class="slide"><img src="./images/pic4.jpg"></div>
+       </div> 
+       <script>
+        const slides = document.querySelectorAll('.slide');
+         let currentSlide = 0;
+
+        function showSlide(index) {
+         slides.forEach((slide, i) => {
+        slide.style.display = i === index ? 'block' : 'none';
+         });
+        }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+      showSlide(currentSlide);
+
+    //5 seconds
+       setInterval(nextSlide, 5000);
+      </script>
+      <p>Images here change every 5 seconds.</p>
+    </body>
+</html>

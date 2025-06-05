@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+         <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+    <body>
+        <a href="./index.html">Back to homepage</a>
+        <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function SimpleForm() {
+      const [name, setName] = useState('');
+      const [submittedName, setSubmittedName] = useState('');
+      const [age, setAge] = useState('');
+      const [submittedAge, setSubmittedAge] = useState('');
+      const [location, setLocation] = useState('');
+      const [submittedLocation, setSubmittedLocation] = useState('');
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setSubmittedName(name);
+        setName('');
+        setSubmittedAge(age);
+        setAge('');
+        setSubmittedLocation(location);
+        setLocation('');
+      };
+
+      return (
+        <div>
+          <h1>Form</h1>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Enter your name:
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </label>
+           <label>
+                Enter your age:
+                <input type="number"
+                 value={age}
+                 onChange={(e) => setAge(e.target.value) }/>
+                
+                </label>
+                <label>
+                  Enter your Location:
+                  <input type="text"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value) }/>
+                  </label>
+            <button type="submit">Submit</button>
+          </form>
+
+          {submittedName && (
+            <div>
+              <h2>Hello, {submittedName}!</h2>
+              <h2>You are {submittedAge} years old</h2>
+              <h2>You live at {submittedLocation}</h2>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<SimpleForm />);
+  </script>
+<h6>This info will be visible to no one but you</h6>
+    </body>
+</html>
