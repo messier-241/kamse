@@ -35,6 +35,7 @@ a:link, a:visited{
 
 .about{
     font-style: italic;
+    text-decoration: none;
 }
 
 .slidecontainer{
